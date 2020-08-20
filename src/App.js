@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import './App.css';
 
@@ -15,8 +15,8 @@ const Container = styled.div`
 
 const Level = styled.div`
   position: relative;
-  width: 700px;
-  height: 350px;
+  width: 840px;
+  height: 455px;
   background-color: #a35409;
 `;
 
@@ -45,6 +45,26 @@ class App extends React.Component {
       position: [0, 0],
       side: '0 105px'
     };
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleMove)
+  }
+
+  handleMove = (event) => {      
+    console.log('pressionado');
+    if (event.key === "ArrowDown") {
+      this.setState({position: [this.state.position[0], this.state.position[1] + 35], side: '0 0px'});
+    }
+    if (event.key === "ArrowUp") {
+      this.setState({position: [this.state.position[0], this.state.position[1] - 35], side: '0 70px'});
+    }
+    if (event.key === "ArrowRight") {
+      this.setState({position: [this.state.position[0] + 35, this.state.position[1]], side: '0 105px'});
+    }
+    if (event.key === "ArrowLeft") {
+      this.setState({position: [this.state.position[0] - 35, this.state.position[1]], side: '0 35px'});
+    }
   }
 
   render() {
