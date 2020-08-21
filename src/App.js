@@ -51,17 +51,23 @@ class App extends React.Component {
     window.addEventListener('keydown', this.handleMove)
   }
 
-  handleMove = (event) => {      
-    console.log('pressionado');
+  handleMove = (event) => {
+    if (this.state.position[1] >= 420) return;
     if (event.key === "ArrowDown") {
       this.setState({position: [this.state.position[0], this.state.position[1] + 35], side: '0 0px'});
     }
+
+    if (this.state.position[1] <= 0) return;
     if (event.key === "ArrowUp") {
       this.setState({position: [this.state.position[0], this.state.position[1] - 35], side: '0 70px'});
     }
+
+    if (this.state.position[0] >= 805) return;
     if (event.key === "ArrowRight") {
       this.setState({position: [this.state.position[0] + 35, this.state.position[1]], side: '0 105px'});
     }
+
+    if (this.state.position[0] <= 0) return;
     if (event.key === "ArrowLeft") {
       this.setState({position: [this.state.position[0] - 35, this.state.position[1]], side: '0 35px'});
     }
