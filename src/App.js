@@ -52,23 +52,22 @@ class App extends React.Component {
   }
 
   handleMove = (event) => {
-    if (this.state.position[1] >= 420) return;
-    if (event.key === "ArrowDown") {
+    
+    console.log( "position ini'cio",this.state.position )
+    
+    if (event.key === "ArrowDown" && this.state.position[1] <= 385 ) {
       this.setState({position: [this.state.position[0], this.state.position[1] + 35], side: '0 0px'});
     }
 
-    if (this.state.position[1] <= 0) return;
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" && this.state.position[1] >= 35 ) {
       this.setState({position: [this.state.position[0], this.state.position[1] - 35], side: '0 70px'});
     }
 
-    if (this.state.position[0] >= 805) return;
-    if (event.key === "ArrowRight") {
+    if (event.key === "ArrowRight" && this.state.position[0] <= 770 ) {
       this.setState({position: [this.state.position[0] + 35, this.state.position[1]], side: '0 105px'});
     }
 
-    if (this.state.position[0] <= 0) return;
-    if (event.key === "ArrowLeft") {
+    if (event.key === "ArrowLeft" && this.state.position[0] >= 35 ) {
       this.setState({position: [this.state.position[0] - 35, this.state.position[1]], side: '0 35px'});
     }
   }
